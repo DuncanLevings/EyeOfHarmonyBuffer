@@ -234,12 +234,12 @@ public final class MachineBlockRecipes implements IRecipePool {
             ItemStack[] adjustedComponents = new ItemStack[components.length];
             for (int j = 0; j < components.length; j++) {
                 ItemStack stack = components[j].copy();
-                stack.stackSize = 1024;
+                stack.stackSize = 256;
                 adjustedComponents[j] = stack;
             }
 
             ItemStack circuit = CIRCUIT_MAP.get(tier).copy();
-            circuit.stackSize = 123123;
+            circuit.stackSize = 1024;
 
             ItemStack previousCasing;
             int casingCount;
@@ -248,19 +248,19 @@ public final class MachineBlockRecipes implements IRecipePool {
                 casingCount = 1;
                 previousCasing = EOHBCatalyst.get(OrePrefixes.ingot, casingCount);
             } else {
-                casingCount = 2;
+                casingCount = 1;
                 previousCasing = SINGULARITY_CASINGS_MAP.get(tiers[i - 1]).copy();
                 previousCasing.stackSize = casingCount;
             }
 
             List<ItemStack> allInputs = new ArrayList<>(Arrays.asList(
                 previousCasing,
-                GTUtility.copyAmountUnsafe(123, getModItem(AppliedEnergistics2.ID, "item.ItemExtremeStorageCell.Universe", 1)),
-                GTUtility.copyAmountUnsafe(123, getModItem(AE2FluidCraft.ID, "fluid_storage.Universe", 1)),
-                GTUtility.copyAmountUnsafe(123, getModItem(AppliedEnergistics2.ID, "item.ItemVoidStorageCell", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(AppliedEnergistics2.ID, "tile.BlockSingularityCraftingStorage", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(AppliedEnergistics2.ID, "tile.BlockAdvancedCraftingUnit", 1,3)),
-                GTUtility.copyAmountUnsafe(100000, getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1,47)),
+                GTUtility.copyAmountUnsafe(8, getModItem(AppliedEnergistics2.ID, "item.ItemExtremeStorageCell.Universe", 1)),
+                GTUtility.copyAmountUnsafe(8, getModItem(AE2FluidCraft.ID, "fluid_storage.Universe", 1)),
+                GTUtility.copyAmountUnsafe(8, getModItem(AppliedEnergistics2.ID, "item.ItemVoidStorageCell", 1)),
+                GTUtility.copyAmountUnsafe(8, getModItem(AppliedEnergistics2.ID, "tile.BlockSingularityCraftingStorage", 1)),
+                GTUtility.copyAmountUnsafe(8, getModItem(AppliedEnergistics2.ID, "tile.BlockAdvancedCraftingUnit", 1,3)),
+                GTUtility.copyAmountUnsafe(1000, getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1,47)),
                 circuit
             ));
             Collections.addAll(allInputs, adjustedComponents);
@@ -278,14 +278,14 @@ public final class MachineBlockRecipes implements IRecipePool {
                     allInputs.toArray(new ItemStack[0])
                 )
                 .fluidInputs(
-                    MaterialMisc.MUTATED_LIVING_SOLDER.getFluidStack(12800000),
-                    Materials.Infinity.getMolten(12800000),
-                    MaterialsUEVplus.SpaceTime.getMolten(12800000)
+                    MaterialMisc.MUTATED_LIVING_SOLDER.getFluidStack(100000),
+                    Materials.Infinity.getMolten(100000),
+                    MaterialsUEVplus.SpaceTime.getMolten(100000)
                 )
                 .itemOutputs(
                     output
                 )
-                .duration(5000 * SECONDS + + tier.ordinal() * (1000 * SECONDS))
+                .duration(500 * SECONDS + + tier.ordinal() * (100 * SECONDS))
                 .eut(TierEU.RECIPE_MAX)
                 .addTo(AssemblyLine);
         }
@@ -296,31 +296,31 @@ public final class MachineBlockRecipes implements IRecipePool {
             .metadata(SCANNING, new Scanning(500 * MINUTES, TierEU.RECIPE_UEV))
             .itemInputsUnsafe(
                 GTCMItemList.SingularityStabilizationRingCasingsUXV.get(1),
-                GTUtility.copyAmountUnsafe(1024, getModItem(SGCraft.ID, "sgChevronUpgrade", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(SGCraft.ID, "sgCoreCrystal", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(SGCraft.ID, "ic2Capacitor", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(SGCraft.ID, "sgControllerCrystal", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(NewHorizonsCoreMod.ID, "item.StargateChevron",1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(SGCraft.ID, "sgIrisUpgrade", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(SGCraft.ID, "sgIrisBlade", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(SGCraft.ID, "stargateBase", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(AppliedEnergistics2.ID, "item.ItemExtremeStorageCell.Universe", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(AE2FluidCraft.ID, "fluid_storage.Universe", 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(AppliedEnergistics2.ID, "item.ItemVoidStorageCell", 1)),
-                GTUtility.copyAmountUnsafe(1024, GTOreDictUnificator.get(OrePrefixes.circuit, Materials.MAX, 1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(NewHorizonsCoreMod.ID, "item.StargateShieldingFoil",1)),
-                GTUtility.copyAmountUnsafe(1024, getModItem(NewHorizonsCoreMod.ID, "item.StargateFramePart",1)),
-                GTUtility.copyAmountUnsafe(1024, ItemList.Field_Generator_MAX.get(1))
+                GTUtility.copyAmountUnsafe(64, getModItem(SGCraft.ID, "sgChevronUpgrade", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(SGCraft.ID, "sgCoreCrystal", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(SGCraft.ID, "ic2Capacitor", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(SGCraft.ID, "sgControllerCrystal", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(NewHorizonsCoreMod.ID, "item.StargateChevron",1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(SGCraft.ID, "sgIrisUpgrade", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(SGCraft.ID, "sgIrisBlade", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(SGCraft.ID, "stargateBase", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(AppliedEnergistics2.ID, "item.ItemExtremeStorageCell.Universe", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(AE2FluidCraft.ID, "fluid_storage.Universe", 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(AppliedEnergistics2.ID, "item.ItemVoidStorageCell", 1)),
+                GTUtility.copyAmountUnsafe(64, GTOreDictUnificator.get(OrePrefixes.circuit, Materials.MAX, 1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(NewHorizonsCoreMod.ID, "item.StargateShieldingFoil",1)),
+                GTUtility.copyAmountUnsafe(64, getModItem(NewHorizonsCoreMod.ID, "item.StargateFramePart",1)),
+                GTUtility.copyAmountUnsafe(64, ItemList.Field_Generator_MAX.get(1))
             )
             .fluidInputs(
-                MaterialMisc.MUTATED_LIVING_SOLDER.getFluidStack(12800000),
-                Materials.Infinity.getMolten(12800000),
-                MaterialsUEVplus.SpaceTime.getMolten(12800000)
+                MaterialMisc.MUTATED_LIVING_SOLDER.getFluidStack(100000),
+                Materials.Infinity.getMolten(100000),
+                MaterialsUEVplus.SpaceTime.getMolten(100000)
             )
             .itemOutputs(
                 GTCMItemList.SingularityStabilizationRingCasingsMAX.get(1)
             )
-            .duration(20000000 * SECONDS)
+            .duration(20000 * SECONDS)
             .eut(TierEU.RECIPE_MAX)
             .addTo(AssemblyLine);
 
